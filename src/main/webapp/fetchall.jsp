@@ -11,13 +11,11 @@
 <title>Movie List</title>
 </head>
 <body>
-	<h1 align="center"> List of Movies</h1>
+	<h1 align="center"> Movie Details</h1>
 	<% 
        List<Movie> list = (List<Movie>)request.getAttribute("list");
-	%>
-	
-	<div align="center">
-		
+	%>	
+	<div align="center">	
         <table border="1">  
         	<tr>
                 <th>Name</th>
@@ -27,8 +25,7 @@
                 <th>Rating</th>
                 <th>Edit</th>
                 <th>Delete</th>
-            </tr>
-            
+            </tr>          
             <%for(Movie movie:list){ %>
             	<tr>
 	                <th><%=movie.getName() %></th>
@@ -36,8 +33,8 @@
 	                <th><%=movie.getLanguage() %></th>
 	                <th><%=movie.getGenre() %></th>
 	                <th><%=movie.getRating() %></th>
-	                <th>Edit</th>
-	                <th>Delete</th>
+	                <th><a href="edit-movie?id=<%=movie.getId() %>"><button>Edit</button></a></th>
+	                <th><a href="delete-movie?id=<%=movie.getId() %>"><button>Delete</button></a></th>
            		 </tr>
             <%} %>
      </table>

@@ -58,6 +58,26 @@ public class MovieDao
 	 {    
 	     return manager.createQuery("select m from Movie m where m.genre=?1").setParameter(1, movie_genre).getResultList();
 	 }
-}
+	 
+	 public void deleteMovie(int id)
+	 {
+		 	transaction.begin();
+		 	manager.remove(manager.find(Movie.class,id));
+		 	transaction.commit();
+	 }
 	
+     public Movie findMovie(int id)
+     {
+    	 return manager.find(Movie.class, id);
+    }
+     
+     public void updateMovie(Movie movie)
+     {
+    	 transaction.begin();
+    	 manager.merge(movie);
+    	 transaction.commit();
+    }
+     
+}
+       
 
